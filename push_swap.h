@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:17:47 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/06 14:37:55 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/09 10:58:49 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "../libft/libft.h"
 # include "../ft_printf/ft_printf.h"
 
-t_list		*prep_stack_a(int argc, char **argv, t_list *stack_a);
+void		prep_stack_a(int argc, char **argv, t_list **stack_a);
 long long	ft_atoll(const char *nptr);
 void		swap(t_list *stack);
 void		push(t_list **stack1, t_list **stack2);

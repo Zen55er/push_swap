@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:41:54 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/06 14:49:00 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:57:03 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,68 +18,70 @@ static void	del(void *content)
 	return ;
 }
 
-int	main(int argc, char **argv)
+static void	print_start(int argc, char **argv)
 {
-	int		i;
-	t_list	*stack_a;
-	t_list	*stack_b;
-	t_list	*temp_a;
-	t_list	*temp_b;
+	int	i;
 
 	i = 1;
-	stack_a = 0;
-	stack_b = 0;
-	/* ft_printf("BEFORE:\n");
+	ft_printf("Input\n");
 	while (i < argc)
 	{
 		ft_printf("%s\n", argv[i]);
 		i++;
-	} */
-	stack_a = prep_stack_a(argc, argv, stack_a);
-	temp_a = stack_a;
-	while (temp_a)
-	{
-		printf("Stack A, Node %i content: %lld\n", i, (long long)temp_a->content);
-		temp_a = temp_a->next;
-		i++;
 	}
-	swap(stack_a);
+	ft_printf("\n");
+	return ;
+}
+
+static void	print_stack(int ac, char **av, t_list *stack_a, t_list *stack_b)
+{
+	int		i;
+	char	c;
+
 	i = 1;
-	ft_printf("\nTESTING SWAP\n");
-	temp_a = stack_a;
-	while (temp_a)
+	printf("Stack A\t\t\t\t");
+	if (stack_b)
+		printf("Stack B");
+	while (stack_a)
 	{
-		printf("Stack A, Node %i content: %lld\n", i, (long long)temp_a->content);
-		temp_a = temp_a->next;
-		i++;
-	}
-	temp_b = stack_b;
-	i = 1;
-	ft_printf("\nTESTING EMPTY B\n");
-	while (temp_b)
-	{
-		printf("Stack B, Node %i content: %lld\n", i, (long long)temp_b->content);
-		temp_b = temp_b->next;
-		i++;
-	}
-	push(&stack_a, &stack_b);
-	temp_a = stack_a;
-	temp_b = stack_b;
-	i = 1;
-	ft_printf("\nTESTING PUSH\n");
-	while (temp_a)
-	{
-		printf("Stack A, Node %i content: %lld\t\t\t", i, (long long)temp_a->content);
-		if (temp_b)
+		printf("\n");
+		printf("Node %i: %lld\t\t\t", i, (long long)stack_a->content);
+		if (stack_b)
 		{
-			printf("Stack B, Node %i content: %lld\n", i, (long long)temp_b->content);
-			temp_b = temp_b->next;
+			printf("Node %i: %lld", i, (long long)stack_b->content);
+			stack_b = stack_b->next;
 		}
-		else
-			printf("\n");
-		temp_a = temp_a->next;
+		stack_a = stack_a->next;
 		i++;
 	}
+	printf("\n");
+	return ;
+}
+
+int	main(int argc, char **argv)
+{
+	t_list	*stack_a;
+	t_list	*stack_b;
+
+	stack_a = 0;
+	stack_b = 0;
+	//Print initial data
+	print_start(argc, argv);
+	//Check data, passes to linked list and prints content
+	prep_stack_a(argc, argv, &stack_a);
+	print_stack(argc, argv, stack_a, 0);
+	//Testing swap operation and print results
+	swap(stack_a);
+	ft_printf("\nTESTING SWAP\n");
+	print_stack(argc, argv, stack_a, 0);
+	//Prints B stack to make sure it's empty
+	ft_printf("\nTESTING EMPTY B\n");
+	print_stack(argc, argv, 0, stack_b);
+	//Testing push operation and print results
+	push(&stack_a, &stack_b);
+	ft_printf("\nTESTING PUSH\n");
+	print_stack(argc, argv, stack_a, stack_b);
+	//Free memory
 	ft_lstclear(&stack_a, del);
 	ft_lstclear(&stack_b, del);
 	return (0);
