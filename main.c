@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:41:54 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/09 11:57:03 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/09 12:14:55 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,10 @@ int	main(int argc, char **argv)
 	//Testing push operation and print results
 	push(&stack_a, &stack_b);
 	ft_printf("\nTESTING PUSH\n");
+	print_stack(argc, argv, stack_a, stack_b);
+	//Testing rotate operation and print results
+	rotate(&stack_a);
+	ft_printf("\nTESTING ROTATE\n");
 	print_stack(argc, argv, stack_a, stack_b);
 	//Free memory
 	ft_lstclear(&stack_a, del);
