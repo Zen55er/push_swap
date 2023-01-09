@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:41:54 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/09 15:02:07 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/09 16:36:45 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,15 @@ int	main(int argc, char **argv)
 	ft_printf("\nTESTING REVERSE ROTATE\n");
 	print_stack(argc, argv, stack_a, stack_b); */
 
-	//Testing sort 3 and print results
+	/* //Testing sort 3 and print results
 	ft_printf("\nTESTING SORT 3\n");
-	choose_sort(&stack_a);
-	print_stack(argc, argv, stack_a, 0);
+	choose_sort(&stack_a, &stack_b);
+	print_stack(argc, argv, stack_a, 0); */
+
+	//Testing sort 4 and print results
+	ft_printf("\nTESTING SORT 4\n");
+	choose_sort(&stack_a, &stack_b);
+	print_stack(argc, argv, stack_a, stack_b);
 	//Free memory
 	ft_lstclear(&stack_a, del);
 	ft_lstclear(&stack_b, del);
