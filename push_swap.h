@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:17:47 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/09 13:59:36 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/09 15:19:02 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 
 void		prep_stack_a(int argc, char **argv, t_list **stack_a);
 long long	ft_atoll(const char *nptr);
-void		swap(t_list *stack);
-void		push(t_list **stack1, t_list **stack2);
-void		rotate(t_list **stack);
-void		reverse_rotate(t_list **stack);
+void		swap(t_list *stack, int flag);
+void		push(t_list **stack1, t_list **stack2, int flag);
+void		rotate(t_list **stack, int flag);
+void		reverse_rotate(t_list **stack, int flag);
 int			check_sort(t_list *stack);
 void		choose_sort(t_list **stack);
 void		sort_3(t_list **stack);
