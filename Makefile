@@ -5,7 +5,7 @@ LIBFT =			../libft/libft.a
 FT_PRINTF_DIR =	../ft_printf
 FT_PRINTF =		../ft_printf/libftprintf.a
 BONUS_LIB =		checker.h
-SRC =			push_swap.c utils.c operations.c
+SRC =			push_swap.c operations.c utils.c
 SRC_OBJS =		$(SRC:.c=.o)
 BONUS_OBJS =	checker.c
 BONUS_OBJS =	$(BONUS_OBJS:.c=.o)
@@ -33,9 +33,10 @@ fclean:		clean
 			@$(MAKE) --no-print-directory -C $(LIBFT_DIR) fclean
 			@$(MAKE) --no-print-directory -C $(FT_PRINTF_DIR) fclean
 
-re:			fclean all
-			@$(MAKE) --no-print-directory -C $(LIBFT_DIR) re
-			@$(MAKE) --no-print-directory -C $(FT_PRINTF_DIR) re
+re:			
+			@$(MAKE) --no-print-directory -C $(LIBFT_DIR) fclean
+			@$(MAKE) --no-print-directory -C $(FT_PRINTF_DIR) fclean
+			fclean all
 
 run:
 			$(CC) $(FLAGS) main.c $(NAME) $(LIBFT) $(FT_PRINTF) -fsanitize=address
