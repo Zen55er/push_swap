@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:47:32 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/09 15:23:41 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/09 16:10:17 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,20 @@ long long	ft_atoll(const char *nptr)
 	return (final * signal);
 }
 
+long long	find_min(t_list *stack)
+{
+	long long	min;
+
+	min = (long long)stack->content;
+	while (stack)
+	{
+		if (stack->content < min)
+			min = stack->content;
+		stack = stack->next;
+	}
+	return (min);
+}
+
 int	check_sort(t_list *stack)
 {
 	while (stack->next)
@@ -52,45 +66,20 @@ int	check_sort(t_list *stack)
 	return (1);
 }
 
-void	choose_sort(t_list **stack)
+void	choose_sort(t_list **stack_a, t_list **stack_b)
 {
 	int	n;
 
-	if (check_sort(*stack) == 1)
+	if (check_sort(*stack_a) == 1)
 		return ;
-	n = ft_lstsize(*stack);
-	if (n == 3)
-		sort_3(stack);
-	/* else if (n == 5)
-		sort_5(stack); */
+	n = ft_lstsize(*stack_a);
+	if (n == 2)
+		swap(*stack_a, 0);
+	else if (n == 3)
+		sort_3(stack_a);
+	/* else if (n == 4)
+		sort_4(stack_a, stack_b);
+	else if (n == 5)
+		sort_5(stack_a, stack_b); */
 	return ;
-}
-
-void	sort_3(t_list **stack)
-{
-	t_list	*temp;
-	int		*a;
-	int		*b;
-	int		*c;
-
-	temp = *stack;
-	a = (*stack)->content;
-	b = (*stack)->next->content;
-	c = (*stack)->next->next->content;
-	if (a < b && c > a)
-	{
-		swap(*stack, 0);
-		rotate(stack, 0);
-	}
-	else if (a > b && c > a)
-		swap(*stack, 0);
-	else if (b > a && a > c)
-		reverse_rotate(stack, 0);
-	else if (a > b && b < c)
-		rotate(stack, 0);
-	else if (a > b && b > c)
-	{
-		swap(*stack, 0);
-		reverse_rotate(stack, 0);
-	}
 }
