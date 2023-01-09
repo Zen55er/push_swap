@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:17:47 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/09 12:04:58 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/09 12:33:06 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ long long	ft_atoll(const char *nptr);
 void		swap(t_list *stack);
 void		push(t_list **stack1, t_list **stack2);
 void		rotate(t_list **stack);
+void		reverse_rotate(t_list **stack);
 
 #endif

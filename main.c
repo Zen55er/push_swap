@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:41:54 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/09 12:14:55 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/09 12:34:14 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,10 @@ int	main(int argc, char **argv)
 	//Testing rotate operation and print results
 	rotate(&stack_a);
 	ft_printf("\nTESTING ROTATE\n");
+	print_stack(argc, argv, stack_a, stack_b);
+	//Testing reverse rotate operation and print results
+	reverse_rotate(&stack_a);
+	ft_printf("\nTESTING REVERSE ROTATE\n");
 	print_stack(argc, argv, stack_a, stack_b);
 	//Free memory
 	ft_lstclear(&stack_a, del);
