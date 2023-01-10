@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:41:54 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/09 16:36:45 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/10 08:58:23 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,16 @@ int	main(int argc, char **argv)
 
 	stack_a = 0;
 	stack_b = 0;
-	//Print initial data
-	print_start(argc, argv);
+	/* //Print initial data
+	print_start(argc, argv); */
+
 	//Check data, passes to linked list and prints content
 	prep_stack_a(argc, argv, &stack_a);
 	print_stack(argc, argv, stack_a, 0);
-	//Prints B stack to make sure it's empty
+
+	/* //Prints B stack to make sure it's empty
 	ft_printf("\nTESTING EMPTY B\n");
-	print_stack(argc, argv, 0, stack_b);
+	print_stack(argc, argv, 0, stack_b); */
 
 	/* //Testing swap operation and print results
 	swap(stack_a);
@@ -91,13 +93,8 @@ int	main(int argc, char **argv)
 	ft_printf("\nTESTING REVERSE ROTATE\n");
 	print_stack(argc, argv, stack_a, stack_b); */
 
-	/* //Testing sort 3 and print results
-	ft_printf("\nTESTING SORT 3\n");
-	choose_sort(&stack_a, &stack_b);
-	print_stack(argc, argv, stack_a, 0); */
-
-	//Testing sort 4 and print results
-	ft_printf("\nTESTING SORT 4\n");
+	//Testing sorts and print results
+	ft_printf("\nTESTING SORTs\n");
 	choose_sort(&stack_a, &stack_b);
 	print_stack(argc, argv, stack_a, stack_b);
 	//Free memory

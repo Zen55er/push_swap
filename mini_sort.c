@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 15:55:44 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/09 16:37:47 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/10 09:16:11 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,6 @@ void	sort_3(t_list **stack)
 	}
 }
 
-int	count_moves(t_list *stack, long long min)
-{
-	long long	moves;
-
-	moves = 0;
-	while (stack)
-	{
-		if ((long long)stack->content == min)
-			break ;
-		moves++;
-		stack = stack->next;
-	}
-	return (moves);
-}
-
 void	sort_4(t_list **stack_a, t_list **stack_b)
 {
 	t_list		*temp;
@@ -77,5 +62,29 @@ void	sort_4(t_list **stack_a, t_list **stack_b)
 		reverse_rotate(stack_a, 0);
 	push(stack_a, stack_b, 1);
 	sort_3(stack_a);
+	push(stack_b, stack_a, 0);
+}
+
+void	sort_5(t_list **stack_a, t_list **stack_b)
+{
+	t_list		*temp;
+	long long	min;
+	long long	moves;
+
+	min = find_min(*stack_a);
+	temp = *stack_a;
+	moves = count_moves(*stack_a, min);
+	if (moves < 3)
+	{
+		while (moves-- > 0)
+			rotate(stack_a, 0);
+	}
+	else
+	{
+		while ((long long)(*stack_a)->content != min)
+			reverse_rotate(stack_a, 0);
+	}
+	push(stack_a, stack_b, 1);
+	sort_4(stack_a, stack_b);
 	push(stack_b, stack_a, 0);
 }

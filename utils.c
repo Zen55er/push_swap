@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:47:32 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/09 16:38:47 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/10 08:42:34 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,21 @@ long long	find_min(t_list *stack)
 	return (min);
 }
 
+int	count_moves(t_list *stack, long long min)
+{
+	long long	moves;
+
+	moves = 0;
+	while (stack)
+	{
+		if ((long long)stack->content == min)
+			break ;
+		moves++;
+		stack = stack->next;
+	}
+	return (moves);
+}
+
 int	check_sort(t_list *stack)
 {
 	while (stack->next)
@@ -79,7 +94,7 @@ void	choose_sort(t_list **stack_a, t_list **stack_b)
 		sort_3(stack_a);
 	else if (n == 4)
 		sort_4(stack_a, stack_b);
-	/* else if (n == 5)
-		sort_5(stack_a, stack_b); */
+	else if (n == 5)
+		sort_5(stack_a, stack_b);
 	return ;
 }

@@ -33,10 +33,7 @@ fclean:		clean
 			@$(MAKE) --no-print-directory -C $(LIBFT_DIR) fclean
 			@$(MAKE) --no-print-directory -C $(FT_PRINTF_DIR) fclean
 
-re:			
-			@$(MAKE) --no-print-directory -C $(LIBFT_DIR) fclean
-			@$(MAKE) --no-print-directory -C $(FT_PRINTF_DIR) fclean
-			fclean all
+re:			fclean all
 
 run:
 			$(CC) $(FLAGS) main.c $(NAME) $(LIBFT) $(FT_PRINTF) -fsanitize=address
