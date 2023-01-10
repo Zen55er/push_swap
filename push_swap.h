@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:17:47 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/10 08:43:11 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/10 12:56:57 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,32 @@
 # include "../libft/libft.h"
 # include "../ft_printf/ft_printf.h"
 
-void		prep_stack_a(int argc, char **argv, t_list **stack_a);
+typedef struct s_list
+{
+	int				value;
+	int				position;
+	struct s_list	*next;
+}					t_nlist;
+
+void		free_list(t_nlist **stack);
+t_nlist		*new_node(int number);
+int			list_size(t_nlist *stack);
+t_nlist		*last_node(t_nlist *stack);
+void		add_back(t_nlist **stack, t_nlist *node);
+void		add_front(t_nlist **stack, t_nlist *node);
+
+void		prep_stack_a(int argc, char **argv, t_nlist **stack_a);
 long long	ft_atoll(const char *nptr);
-void		swap(t_list *stack, int flag);
-void		push(t_list **stack1, t_list **stack2, int flag);
-void		rotate(t_list **stack, int flag);
-void		reverse_rotate(t_list **stack, int flag);
-long long	find_min(t_list *stack);
-int			count_moves(t_list *stack, long long min);
-int			check_sort(t_list *stack);
-void		choose_sort(t_list **stack_a, t_list **stack_b);
-void		sort_3(t_list **stack);
-void		sort_4(t_list **stack_a, t_list **stack_b);
-void		sort_5(t_list **stack_a, t_list **stack_b);
+void		swap(t_nlist *stack, int flag);
+void		push(t_nlist **stack1, t_nlist **stack2, int flag);
+void		rotate(t_nlist **stack, int flag);
+void		reverse_rotate(t_nlist **stack, int flag);
+long long	find_min(t_nlist *stack);
+int			count_moves(t_nlist *stack, long long min);
+int			check_sort(t_nlist *stack);
+void		choose_sort(t_nlist **stack_a, t_nlist **stack_b);
+void		sort_3(t_nlist **stack);
+void		sort_4(t_nlist **stack_a, t_nlist **stack_b);
+void		sort_5(t_nlist **stack_a, t_nlist **stack_b);
 
 #endif

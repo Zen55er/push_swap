@@ -6,16 +6,23 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:11:42 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/09 11:47:59 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/10 12:57:30 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-static void	del(void *content)
+void	free_list(t_nlist **stack)
 {
-	content = 0;
+	t_nlist	*temp;
+
+	while (*stack)
+	{
+		temp = *stack;
+		*stack = (*stack)->next;
+		free(temp);
+	}
 	return ;
 }
 
@@ -61,10 +68,10 @@ static int	check_repeat(int argc, char **argv)
 	return (0);
 }
 
-void	prep_stack_a(int argc, char **argv, t_list **stack_a)
+void	prep_stack_a(int argc, char **argv, t_nlist **stack_a)
 {
 	int		i;
-	t_list	*temp;
+	t_nlist	*temp;
 
 	if (check_repeat(argc, argv) == 6)
 		return ;
@@ -73,16 +80,16 @@ void	prep_stack_a(int argc, char **argv, t_list **stack_a)
 	{
 		if (check_value(argv[i]) == 6)
 		{
-			ft_lstclear(stack_a, del);
+			free_list(stack_a);
 			return ;
 		}
-		temp = ft_lstnew((void *)ft_atoll(argv[i]));
+		temp = new_node(ft_atoi(argv[i]));
 		if (!temp)
 		{
-			ft_lstclear(stack_a, del);
+			free_list(stack_a);
 			return ;
 		}
-		ft_lstadd_back(stack_a, temp);
+		add_back(stack_a, temp);
 		i++;
 	}
 	return ;

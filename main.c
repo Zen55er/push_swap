@@ -6,17 +6,11 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:41:54 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/10 08:58:23 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:02:07 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	del(void *content)
-{
-	content = 0;
-	return ;
-}
 
 static void	print_start(int argc, char **argv)
 {
@@ -33,7 +27,7 @@ static void	print_start(int argc, char **argv)
 	return ;
 }
 
-static void	print_stack(int ac, char **av, t_list *stack_a, t_list *stack_b)
+static void	print_stack(int ac, char **av, t_nlist *stack_a, t_nlist *stack_b)
 {
 	int		i;
 	char	c;
@@ -45,10 +39,10 @@ static void	print_stack(int ac, char **av, t_list *stack_a, t_list *stack_b)
 	while (stack_a)
 	{
 		printf("\n");
-		printf("Node %i: %lld\t\t\t", i, (long long)stack_a->content);
+		printf("Node %i: %lld\t\t\t", i, (long long)stack_a->value);
 		if (stack_b)
 		{
-			printf("Node %i: %lld", i, (long long)stack_b->content);
+			printf("Node %i: %lld", i, (long long)stack_b->value);
 			stack_b = stack_b->next;
 		}
 		stack_a = stack_a->next;
@@ -60,8 +54,8 @@ static void	print_stack(int ac, char **av, t_list *stack_a, t_list *stack_b)
 
 int	main(int argc, char **argv)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	t_nlist	*stack_a;
+	t_nlist	*stack_b;
 
 	stack_a = 0;
 	stack_b = 0;
@@ -70,7 +64,6 @@ int	main(int argc, char **argv)
 
 	//Check data, passes to linked list and prints content
 	prep_stack_a(argc, argv, &stack_a);
-	print_stack(argc, argv, stack_a, 0);
 
 	/* //Prints B stack to make sure it's empty
 	ft_printf("\nTESTING EMPTY B\n");
@@ -94,11 +87,12 @@ int	main(int argc, char **argv)
 	print_stack(argc, argv, stack_a, stack_b); */
 
 	//Testing sorts and print results
-	ft_printf("\nTESTING SORTs\n");
+	ft_printf("\nTESTING SORTS\n");
 	choose_sort(&stack_a, &stack_b);
+	ft_printf("\n");
 	print_stack(argc, argv, stack_a, stack_b);
 	//Free memory
-	ft_lstclear(&stack_a, del);
-	ft_lstclear(&stack_b, del);
+	free_list(&stack_a);
+	free_list(&stack_b);
 	return (0);
 }

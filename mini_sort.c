@@ -6,23 +6,23 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 15:55:44 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/10 09:16:11 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:03:21 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_3(t_list **stack)
+void	sort_3(t_nlist **stack)
 {
-	t_list	*temp;
+	t_nlist	*temp;
 	int		*a;
 	int		*b;
 	int		*c;
 
 	temp = *stack;
-	a = (*stack)->content;
-	b = (*stack)->next->content;
-	c = (*stack)->next->next->content;
+	a = (*stack)->value;
+	b = (*stack)->next->value;
+	c = (*stack)->next->next->value;
 	if (a < b && c > a)
 	{
 		swap(*stack, 0);
@@ -41,9 +41,9 @@ void	sort_3(t_list **stack)
 	}
 }
 
-void	sort_4(t_list **stack_a, t_list **stack_b)
+void	sort_4(t_nlist **stack_a, t_nlist **stack_b)
 {
-	t_list		*temp;
+	t_nlist		*temp;
 	long long	min;
 	long long	moves;
 
@@ -65,9 +65,9 @@ void	sort_4(t_list **stack_a, t_list **stack_b)
 	push(stack_b, stack_a, 0);
 }
 
-void	sort_5(t_list **stack_a, t_list **stack_b)
+void	sort_5(t_nlist **stack_a, t_nlist **stack_b)
 {
-	t_list		*temp;
+	t_nlist		*temp;
 	long long	min;
 	long long	moves;
 
@@ -81,7 +81,7 @@ void	sort_5(t_list **stack_a, t_list **stack_b)
 	}
 	else
 	{
-		while ((long long)(*stack_a)->content != min)
+		while ((long long)(*stack_a)->value != min)
 			reverse_rotate(stack_a, 0);
 	}
 	push(stack_a, stack_b, 1);

@@ -6,19 +6,19 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:30:30 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/09 15:22:18 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:02:44 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_list *stack, int flag)
+void	swap(t_nlist *stack, int flag)
 {
 	int	*i;
 
-	i = stack->content;
-	stack->content = stack->next->content;
-	stack->next->content = i;
+	i = stack->value;
+	stack->value = stack->next->value;
+	stack->next->value = i;
 	if (flag == 0)
 		ft_printf("sa\n");
 	else
@@ -26,9 +26,9 @@ void	swap(t_list *stack, int flag)
 	return ;
 }
 
-void	push(t_list **stack1, t_list **stack2, int flag)
+void	push(t_nlist **stack1, t_nlist **stack2, int flag)
 {
-	t_list	*temp;
+	t_nlist	*temp;
 
 	temp = *stack1;
 	*stack1 = (*stack1)->next;
@@ -41,9 +41,9 @@ void	push(t_list **stack1, t_list **stack2, int flag)
 	return ;
 }
 
-void	rotate(t_list **stack, int flag)
+void	rotate(t_nlist **stack, int flag)
 {
-	t_list	*temp;
+	t_nlist	*temp;
 
 	temp = *stack;
 	*stack = (*stack)->next;
@@ -56,9 +56,9 @@ void	rotate(t_list **stack, int flag)
 	return ;
 }
 
-static void	separate(t_list **stack)
+static void	separate(t_nlist **stack)
 {
-	t_list	*temp;
+	t_nlist	*temp;
 
 	temp = *stack;
 	while (temp)
@@ -70,9 +70,9 @@ static void	separate(t_list **stack)
 	return ;
 }
 
-void	reverse_rotate(t_list **stack, int flag)
+void	reverse_rotate(t_nlist **stack, int flag)
 {
-	t_list	*temp;
+	t_nlist	*temp;
 
 	temp = ft_lstlast(*stack);
 	separate(stack);

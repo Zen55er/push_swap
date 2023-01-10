@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:47:32 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/10 08:42:34 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:03:02 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,28 +41,28 @@ long long	ft_atoll(const char *nptr)
 	return (final * signal);
 }
 
-long long	find_min(t_list *stack)
+long long	find_min(t_nlist *stack)
 {
 	long long	min;
 
-	min = (long long)stack->content;
+	min = (long long)stack->value;
 	while (stack)
 	{
-		if ((long long)stack->content < min)
-			min = (long long)stack->content;
+		if ((long long)stack->value < min)
+			min = (long long)stack->value;
 		stack = stack->next;
 	}
 	return (min);
 }
 
-int	count_moves(t_list *stack, long long min)
+int	count_moves(t_nlist *stack, long long min)
 {
 	long long	moves;
 
 	moves = 0;
 	while (stack)
 	{
-		if ((long long)stack->content == min)
+		if ((long long)stack->value == min)
 			break ;
 		moves++;
 		stack = stack->next;
@@ -70,18 +70,18 @@ int	count_moves(t_list *stack, long long min)
 	return (moves);
 }
 
-int	check_sort(t_list *stack)
+int	check_sort(t_nlist *stack)
 {
 	while (stack->next)
 	{
-		if (stack->content > stack->next->content)
+		if (stack->value > stack->next->value)
 			return (0);
 		stack = stack->next;
 	}
 	return (1);
 }
 
-void	choose_sort(t_list **stack_a, t_list **stack_b)
+void	choose_sort(t_nlist **stack_a, t_nlist **stack_b)
 {
 	int	n;
 
