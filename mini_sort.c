@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 15:55:44 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/10 13:03:21 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:24:18 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	sort_3(t_nlist **stack)
 {
 	t_nlist	*temp;
-	int		*a;
-	int		*b;
-	int		*c;
+	int		a;
+	int		b;
+	int		c;
 
 	temp = *stack;
 	a = (*stack)->value;
@@ -25,18 +25,18 @@ void	sort_3(t_nlist **stack)
 	c = (*stack)->next->next->value;
 	if (a < b && c > a)
 	{
-		swap(*stack, 0);
+		swap(stack, 0);
 		rotate(stack, 0);
 	}
 	else if (a > b && c > a)
-		swap(*stack, 0);
+		swap(stack, 0);
 	else if (b > a && a > c)
 		reverse_rotate(stack, 0);
 	else if (a > b && b < c)
 		rotate(stack, 0);
 	else if (a > b && b > c)
 	{
-		swap(*stack, 0);
+		swap(stack, 0);
 		reverse_rotate(stack, 0);
 	}
 }
@@ -44,8 +44,8 @@ void	sort_3(t_nlist **stack)
 void	sort_4(t_nlist **stack_a, t_nlist **stack_b)
 {
 	t_nlist		*temp;
-	long long	min;
-	long long	moves;
+	int			min;
+	int			moves;
 
 	min = find_min(*stack_a);
 	temp = *stack_a;
@@ -68,8 +68,8 @@ void	sort_4(t_nlist **stack_a, t_nlist **stack_b)
 void	sort_5(t_nlist **stack_a, t_nlist **stack_b)
 {
 	t_nlist		*temp;
-	long long	min;
-	long long	moves;
+	int			min;
+	int			moves;
 
 	min = find_min(*stack_a);
 	temp = *stack_a;
@@ -81,7 +81,7 @@ void	sort_5(t_nlist **stack_a, t_nlist **stack_b)
 	}
 	else
 	{
-		while ((long long)(*stack_a)->value != min)
+		while ((*stack_a)->value != min)
 			reverse_rotate(stack_a, 0);
 	}
 	push(stack_a, stack_b, 1);

@@ -6,19 +6,20 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:30:30 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/10 13:02:44 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:33:55 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_nlist *stack, int flag)
+void	swap(t_nlist **stack, int flag)
 {
-	int	*i;
+	t_nlist	*temp;
 
-	i = stack->value;
-	stack->value = stack->next->value;
-	stack->next->value = i;
+	temp = *stack;
+	(*stack) = (*stack)->next;
+	temp->next = (*stack)->next;
+	(*stack)->next = temp;
 	if (flag == 0)
 		ft_printf("sa\n");
 	else
@@ -48,7 +49,7 @@ void	rotate(t_nlist **stack, int flag)
 	temp = *stack;
 	*stack = (*stack)->next;
 	temp->next = 0;
-	ft_lstadd_back(stack, temp);
+	add_back(stack, temp);
 	if (flag == 0)
 		ft_printf("ra\n");
 	else
@@ -74,9 +75,9 @@ void	reverse_rotate(t_nlist **stack, int flag)
 {
 	t_nlist	*temp;
 
-	temp = ft_lstlast(*stack);
+	temp = last_node(*stack);
 	separate(stack);
-	ft_lstadd_front(stack, temp);
+	add_front(stack, temp);
 	if (flag == 0)
 		ft_printf("rra\n");
 	else

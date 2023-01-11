@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:47:32 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/10 13:03:02 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:24:35 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,28 +41,28 @@ long long	ft_atoll(const char *nptr)
 	return (final * signal);
 }
 
-long long	find_min(t_nlist *stack)
+int	find_min(t_nlist *stack)
 {
-	long long	min;
+	int	min;
 
-	min = (long long)stack->value;
+	min = (int)stack->value;
 	while (stack)
 	{
-		if ((long long)stack->value < min)
-			min = (long long)stack->value;
+		if ((int)stack->value < min)
+			min = (int)stack->value;
 		stack = stack->next;
 	}
 	return (min);
 }
 
-int	count_moves(t_nlist *stack, long long min)
+int	count_moves(t_nlist *stack, int min)
 {
-	long long	moves;
+	int	moves;
 
 	moves = 0;
 	while (stack)
 	{
-		if ((long long)stack->value == min)
+		if ((int)stack->value == min)
 			break ;
 		moves++;
 		stack = stack->next;
@@ -87,9 +87,9 @@ void	choose_sort(t_nlist **stack_a, t_nlist **stack_b)
 
 	if (check_sort(*stack_a) == 1)
 		return ;
-	n = ft_lstsize(*stack_a);
+	n = list_size(*stack_a);
 	if (n == 2)
-		swap(*stack_a, 0);
+		swap(stack_a, 0);
 	else if (n == 3)
 		sort_3(stack_a);
 	else if (n == 4)
