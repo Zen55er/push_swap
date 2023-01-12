@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:11:42 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/11 13:29:01 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:54:13 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@ void	free_list(t_nlist **stack)
 	{
 		temp = *stack;
 		*stack = (*stack)->next;
+		if (temp->next)
+		{
+			temp->next->previous = 0;
+			temp->next = 0;
+		}
+		if (temp->previous)
+		{
+			temp->previous->next = 0;
+			temp->previous = 0;
+		}
 		free(temp);
 	}
 	return ;

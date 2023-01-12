@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:17:47 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/11 13:23:17 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:16:19 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_nlist
 	int				value;
 	int				position;
 	struct s_nlist	*next;
+	struct s_nlist	*previous;
 }					t_nlist;
 
 void		free_list(t_nlist **stack);
@@ -34,7 +35,7 @@ void		add_back(t_nlist **stack, t_nlist *node);
 void		add_front(t_nlist **stack, t_nlist *node);
 
 void		prep_stack_a(int argc, char **argv, t_nlist **stack_a);
-void		swap(t_nlist **stack, int flag);
+void		swap(t_nlist *stack, int flag);
 void		push(t_nlist **stack1, t_nlist **stack2, int flag);
 void		rotate(t_nlist **stack, int flag);
 void		reverse_rotate(t_nlist **stack, int flag);

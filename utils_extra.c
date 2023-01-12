@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:39:35 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/11 11:58:44 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:51:05 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 static int	set_0(t_nlist *stack)
 {
 	int		min;
+	t_nlist	*temp;
 
+	temp = stack;
 	min = find_min(stack);
 	while (stack)
 	{
@@ -25,11 +27,13 @@ static int	set_0(t_nlist *stack)
 			break ;
 		}
 		stack = stack->next;
+		if (stack == temp)
+			break ;
 	}
 	return (min);
 }
 
-static int	find_next_min(t_nlist *stack, int min, int position)
+static int	next_min_set(t_nlist *stack)
 {
 	int		new_min;
 	t_nlist	*temp;
@@ -40,21 +44,38 @@ static int	find_next_min(t_nlist *stack, int min, int position)
 		if (stack->position == -1)
 			break ;
 		stack = stack->next;
+		if (stack == temp)
+			break ;
 	}
 	new_min = stack->value;
+	return (new_min);
+}
+
+static int	find_next_min(t_nlist *stack, int min, int position)
+{
+	int		new_min;
+	t_nlist	*temp;
+
+	new_min = next_min_set(stack);
+	temp = stack;
 	while (stack)
 	{
 		if (stack->value < new_min && stack->value > min)
 			new_min = stack->value;
 		stack = stack->next;
-	}
-	while (temp)
-	{
-		if (temp->value == new_min)
+		if (stack == temp)
 			break ;
-		temp = temp->next;
 	}
-	temp->position = position;
+	stack = temp;
+	while (stack)
+	{
+		if (stack->value == new_min)
+			break ;
+		stack = stack->next;
+		if (stack == temp)
+			break ;
+	}
+	stack->position = position;
 	return (new_min);
 }
 

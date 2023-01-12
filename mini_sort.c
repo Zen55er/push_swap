@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 15:55:44 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/11 13:24:18 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:59:25 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@ void	sort_3(t_nlist **stack)
 	c = (*stack)->next->next->value;
 	if (a < b && c > a)
 	{
-		swap(stack, 0);
+		swap(*stack, 0);
 		rotate(stack, 0);
 	}
 	else if (a > b && c > a)
-		swap(stack, 0);
+		swap(*stack, 0);
 	else if (b > a && a > c)
 		reverse_rotate(stack, 0);
 	else if (a > b && b < c)
 		rotate(stack, 0);
 	else if (a > b && b > c)
 	{
-		swap(stack, 0);
+		swap(*stack, 0);
 		reverse_rotate(stack, 0);
 	}
 }

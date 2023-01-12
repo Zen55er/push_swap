@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:41:54 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/11 13:42:20 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:13:09 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@ static void	print_stack(int ac, char **av, t_nlist *stack_a, t_nlist *stack_b)
 {
 	int		i;
 	char	c;
+	t_nlist	*temp_a;
+	t_nlist	*temp_b;
 
 	i = 1;
+	temp_a = stack_a;
+	temp_b = stack_b;
 	ft_printf("Stack A\t\t\t\t");
 	if (stack_b)
 		ft_printf("Stack B");
@@ -46,7 +50,14 @@ static void	print_stack(int ac, char **av, t_nlist *stack_a, t_nlist *stack_b)
 			stack_b = stack_b->next;
 		}
 		stack_a = stack_a->next;
+		if (stack_a == temp_a)
+			break ;
 		i++;
+	}
+	while (stack_b != temp_b)
+	{
+		ft_printf("Node %i: %i\n", i, stack_b->value);
+		stack_b = stack_b->next;
 	}
 	ft_printf("\n");
 	return ;
@@ -58,8 +69,10 @@ static void	print_list_info(t_nlist *stack_a)
 	int		j;
 	int		k;
 	char	c;
+	t_nlist	*temp;
 
 	i = 1;
+	temp = stack_a;
 	ft_printf("Stack A\n");
 	while (stack_a)
 	{
@@ -67,6 +80,8 @@ static void	print_list_info(t_nlist *stack_a)
 		k = stack_a->position;
 		ft_printf("Node %i: Value %i\t\tPosition %i\n", i, j, k);
 		stack_a = stack_a->next;
+		if (stack_a == temp)
+			break ;
 		i++;
 	}
 	ft_printf("\n");

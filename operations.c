@@ -6,20 +6,23 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:30:30 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/11 13:33:55 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:55:13 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_nlist **stack, int flag)
+void	swap(t_nlist *stack, int flag)
 {
-	t_nlist	*temp;
+	int	hold_value;
+	int	hold_position;
 
-	temp = *stack;
-	(*stack) = (*stack)->next;
-	temp->next = (*stack)->next;
-	(*stack)->next = temp;
+	hold_value = stack->value;
+	hold_position = stack->position;
+	stack->value = stack->next->value;
+	stack->position = stack->next->position;
+	stack->next->value = hold_value;
+	stack->next->position = hold_position;
 	if (flag == 0)
 		ft_printf("sa\n");
 	else
@@ -75,7 +78,7 @@ void	reverse_rotate(t_nlist **stack, int flag)
 {
 	t_nlist	*temp;
 
-	temp = last_node(*stack);
+	temp = (*stack)->previous;
 	separate(stack);
 	add_front(stack, temp);
 	if (flag == 0)
