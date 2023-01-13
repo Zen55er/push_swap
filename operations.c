@@ -30,7 +30,7 @@ void	swap(t_nlist *stack, int flag)
 	return ;
 }
 
-void	push(t_nlist **stack1, t_nlist **stack2, int flag)
+/* void	push(t_nlist **stack1, t_nlist **stack2, int flag)
 {
 	t_nlist	*temp;
 
@@ -43,9 +43,25 @@ void	push(t_nlist **stack1, t_nlist **stack2, int flag)
 	else
 		ft_printf("pb\n");
 	return ;
+} */
+
+void	push(t_nlist **stack1, t_nlist **stack2, int flag)
+{
+	t_nlist	*temp;
+
+	temp = *stack1;
+	*stack1 = (*stack1)->next;
+	(*stack1)->previous = temp->previous;
+	temp->previous->next = (*stack1);
+	add_front(stack2, temp);
+	if (flag == 0)
+		ft_printf("pa\n");
+	else
+		ft_printf("pb\n");
+	return ;
 }
 
-void	rotate(t_nlist **stack, int flag)
+/* void	rotate(t_nlist **stack, int flag)
 {
 	t_nlist	*temp;
 
@@ -58,9 +74,19 @@ void	rotate(t_nlist **stack, int flag)
 	else
 		ft_printf("rb\n");
 	return ;
+} */
+
+void	rotate(t_nlist **stack, int flag)
+{
+	(*stack) = (*stack)->next;	
+	if (flag == 0)
+		ft_printf("ra\n");
+	else
+		ft_printf("rb\n");
+	return ;
 }
 
-static void	separate(t_nlist **stack)
+/* static void	separate(t_nlist **stack)
 {
 	t_nlist	*temp;
 
@@ -72,15 +98,25 @@ static void	separate(t_nlist **stack)
 		temp = temp->next;
 	}
 	return ;
-}
+} */
 
-void	reverse_rotate(t_nlist **stack, int flag)
+/* void	reverse_rotate(t_nlist **stack, int flag)
 {
 	t_nlist	*temp;
 
 	temp = (*stack)->previous;
 	separate(stack);
 	add_front(stack, temp);
+	if (flag == 0)
+		ft_printf("rra\n");
+	else
+		ft_printf("rrb\n");
+	return ;
+} */
+
+void	reverse_rotate(t_nlist **stack, int flag)
+{
+	(*stack) = (*stack)->previous;
 	if (flag == 0)
 		ft_printf("rra\n");
 	else

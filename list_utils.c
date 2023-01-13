@@ -75,6 +75,8 @@ void	add_front(t_nlist **stack, t_nlist *node)
 	if (!*stack)
 	{
 		*stack = node;
+		node->next = node;
+		node->previous = node;
 		return ;
 	}
 	add_back(stack, node);

@@ -109,25 +109,28 @@ int	main(int argc, char **argv)
 	ft_printf("\nTESTING EMPTY B\n");
 	print_stack(argc, argv, 0, stack_b); */
 
-	/* //Testing swap operation and print results
-	swap(&stack_a, 0);
+	//Testing swap operation and print results
+	swap(stack_a, 0);
 	ft_printf("\nTESTING SWAP\n");
-	print_stack(argc, argv, stack_a, 0); */
+	print_stack(argc, argv, stack_a, 0);
+	print_list_info(stack_a);
 
-	/* //Testing push operation and print results
+	//Testing push operation and print results
 	push(&stack_a, &stack_b, 1);
 	ft_printf("\nTESTING PUSH\n");
-	print_stack(argc, argv, stack_a, stack_b); */
+	print_stack(argc, argv, stack_a, stack_b);
+	print_list_info(stack_a);
+	print_list_info(stack_b);
 	
-	/* //Testing rotate operation and print results
+	//Testing rotate operation and print results
 	rotate(&stack_a, 0);
 	ft_printf("\nTESTING ROTATE\n");
-	print_stack(argc, argv, stack_a, stack_b); */
+	print_stack(argc, argv, stack_a, stack_b);
 	
-	/* //Testing reverse rotate operation and print results
+	//Testing reverse rotate operation and print results
 	reverse_rotate(&stack_a, 0);
 	ft_printf("\nTESTING REVERSE ROTATE\n");
-	print_stack(argc, argv, stack_a, stack_b); */
+	print_stack(argc, argv, stack_a, stack_b);
 
 	//Testing sorts and print results
 	/* ft_printf("\nTESTING SORTS\n");
