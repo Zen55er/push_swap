@@ -47,11 +47,11 @@ int	find_min(t_nlist *stack)
 	t_nlist	*temp;
 
 	temp = stack;
-	min = (int)stack->value;
+	min = stack->value;
 	while (stack)
 	{
-		if ((int)stack->value < min)
-			min = (int)stack->value;
+		if (stack->value < min)
+			min = stack->value;
 		stack = stack->next;
 		if (stack == temp)
 			break ;
@@ -83,12 +83,12 @@ int	check_sort(t_nlist *stack)
 	t_nlist	*temp;
 
 	temp = stack;
-	while (stack->next)
+	while (stack)
 	{
 		if (stack->value > stack->next->value)
 			return (0);
 		stack = stack->next;
-		if (stack == temp)
+		if (stack->next->value == temp->value)
 			break ;
 	}
 	return (1);
