@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:17:47 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/12 10:16:19 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/16 11:23:30 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void		choose_sort(t_nlist **stack_a, t_nlist **stack_b);
 void		sort_3(t_nlist **stack);
 void		sort_4(t_nlist **stack_a, t_nlist **stack_b);
 void		sort_5(t_nlist **stack_a, t_nlist **stack_b);
+void		sort_100(t_nlist **stack_a, t_nlist **stack_b);
 
 long long	ft_atoll(const char *nptr);
 #endif

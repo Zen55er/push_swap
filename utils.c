@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:47:32 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/12 13:29:22 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/16 11:53:41 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	count_moves(t_nlist *stack, int min)
 	moves = 0;
 	while (stack)
 	{
-		if ((int)stack->value == min)
+		if (stack->value == min)
 			break ;
 		moves++;
 		stack = stack->next;

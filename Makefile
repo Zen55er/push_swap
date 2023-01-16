@@ -5,7 +5,7 @@ LIBFT =			../libft/libft.a
 FT_PRINTF_DIR =	../ft_printf
 FT_PRINTF =		../ft_printf/libftprintf.a
 BONUS_LIB =		checker.h
-SRC =			push_swap.c operations.c mini_sort.c utils.c list_utils.c utils_extra.c
+SRC =			push_swap.c operations.c mini_sort.c big_sort.c utils.c list_utils.c utils_extra.c
 SRC_OBJS =		$(SRC:.c=.o)
 BONUS_OBJS =	checker.c
 BONUS_OBJS =	$(BONUS_OBJS:.c=.o)
