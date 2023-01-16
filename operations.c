@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:30:30 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/16 10:01:32 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/16 10:20:24 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,14 @@ void	push(t_nlist **stack1, t_nlist **stack2, int flag)
 	t_nlist	*temp;
 
 	temp = *stack1;
-	*stack1 = (*stack1)->next;
-	(*stack1)->previous = temp->previous;
-	temp->previous->next = (*stack1);
+	if ((*stack1)->next->value == temp->value)
+		*stack1 = 0;
+	else
+	{
+		*stack1 = (*stack1)->next;
+		(*stack1)->previous = temp->previous;
+		temp->previous->next = (*stack1);
+	}
 	add_front(stack2, temp);
 	if (flag == 0)
 		ft_printf("pa\n");
