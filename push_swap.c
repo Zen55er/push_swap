@@ -20,7 +20,10 @@ void	free_list(t_nlist **stack)
 	while (*stack)
 	{
 		temp = *stack;
-		*stack = (*stack)->next;
+		if ((*stack)->next == temp)
+			(*stack) = 0;
+		else
+			*stack = (*stack)->next;
 		if (temp->next)
 		{
 			temp->next->previous = 0;

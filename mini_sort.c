@@ -14,12 +14,10 @@
 
 void	sort_3(t_nlist **stack)
 {
-	t_nlist	*temp;
 	int		a;
 	int		b;
 	int		c;
 
-	temp = *stack;
 	a = (*stack)->value;
 	b = (*stack)->next->value;
 	c = (*stack)->next->next->value;
@@ -43,12 +41,10 @@ void	sort_3(t_nlist **stack)
 
 void	sort_4(t_nlist **stack_a, t_nlist **stack_b)
 {
-	t_nlist		*temp;
 	int			min;
 	int			moves;
 
 	min = find_min(*stack_a);
-	temp = *stack_a;
 	moves = count_moves(*stack_a, min);
 	if (moves < 3)
 	{
@@ -67,12 +63,10 @@ void	sort_4(t_nlist **stack_a, t_nlist **stack_b)
 
 void	sort_5(t_nlist **stack_a, t_nlist **stack_b)
 {
-	t_nlist		*temp;
 	int			min;
 	int			moves;
 
 	min = find_min(*stack_a);
-	temp = *stack_a;
 	moves = count_moves(*stack_a, min);
 	if (moves < 3)
 	{

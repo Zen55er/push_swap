@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:30:30 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/12 13:55:13 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/16 09:56:35 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ void	push(t_nlist **stack1, t_nlist **stack2, int flag)
 
 	temp = *stack1;
 	*stack1 = (*stack1)->next;
-	temp->next = *stack2;
-	*stack2 = temp;
+	(*stack1)->previous = temp->previous;
+	temp->previous->next = (*stack1);
+	add_front(stack2, temp);
 	if (flag == 0)
 		ft_printf("pa\n");
 	else
@@ -47,12 +48,7 @@ void	push(t_nlist **stack1, t_nlist **stack2, int flag)
 
 void	rotate(t_nlist **stack, int flag)
 {
-	t_nlist	*temp;
-
-	temp = *stack;
-	*stack = (*stack)->next;
-	temp->next = 0;
-	add_back(stack, temp);
+	(*stack) = (*stack)->next;
 	if (flag == 0)
 		ft_printf("ra\n");
 	else
@@ -60,27 +56,9 @@ void	rotate(t_nlist **stack, int flag)
 	return ;
 }
 
-static void	separate(t_nlist **stack)
-{
-	t_nlist	*temp;
-
-	temp = *stack;
-	while (temp)
-	{
-		if (temp->next->next == 0)
-			temp->next = 0;
-		temp = temp->next;
-	}
-	return ;
-}
-
 void	reverse_rotate(t_nlist **stack, int flag)
 {
-	t_nlist	*temp;
-
-	temp = (*stack)->previous;
-	separate(stack);
-	add_front(stack, temp);
+	(*stack) = (*stack)->previous;
 	if (flag == 0)
 		ft_printf("rra\n");
 	else
