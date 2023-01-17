@@ -6,11 +6,16 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:26:17 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/16 12:28:19 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/17 10:11:21 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	double_check(t_nlist *stack_a, t_nlist *stack_b, int pos, int moves)
+{
+	
+}
 
 static int	get_current(t_nlist *stack_a, int moves)
 {
@@ -39,7 +44,7 @@ static int	get_current(t_nlist *stack_a, int moves)
 	}
 }
 
-static int	find_moves(t_nlist *stack_a, t_nlist *stack_b, int start, int end)
+static int	find_moves(t_nlist *stack_a, int start, int end)
 {
 	int		moves;
 	t_nlist	*temp_forward;
@@ -99,6 +104,6 @@ void	sort_100(t_nlist **stack_a, t_nlist **stack_b)
 
 	chunk_start = 0;
 	chunk_end = 20;
-	moves = find_moves(*stack_a, *stack_b, chunk_start, chunk_end);
+	moves = find_moves(*stack_a, chunk_start, chunk_end);
 	execute_moves(stack_a, stack_b, moves);
 }
