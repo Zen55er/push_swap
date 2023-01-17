@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:12:43 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/17 11:24:55 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/17 12:57:23 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,33 @@ int	find_max_pos(t_nlist *stack)
 	return (max_pos);
 }
 
+int	find_min_pos_moves(t_nlist *stack, int pos)
+{
+	int		moves;
+	t_nlist	*temp_forward;
+	t_nlist	*temp_backward;
+
+	moves = 0;
+	temp_forward = stack;
+	temp_backward = stack;
+	while (1)
+	{
+		if (temp_forward->position == pos)
+			break ;
+		else if (temp_backward->position == pos)
+		{
+			moves *= -1;
+			break ;
+		}
+		moves++;
+		temp_forward = temp_forward->next;
+		if (temp_forward->value == stack->value)
+			break ;
+		temp_backward = temp_backward->previous;
+	}
+	return (moves);
+}
+
 int	find_mid_pos_moves(t_nlist *stack, int pos)
 {
 	int		moves;
@@ -59,11 +86,11 @@ int	find_mid_pos_moves(t_nlist *stack, int pos)
 	temp_backward = stack;
 	while (1)
 	{
-		if (temp_forward->position > start
-			&& temp_forward->position < end)
+		if (temp_forward->position > pos
+			&& temp_forward->previous->position < pos)
 			break ;
-		else if (temp_backward->position > start
-			&& temp_backward->position < end)
+		else if (temp_backward->position > pos
+			&& temp_backward->previous->position < pos)
 		{
 			moves *= -1;
 			break ;

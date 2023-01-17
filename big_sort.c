@@ -6,16 +6,11 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:26:17 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/17 10:11:21 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:36:00 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	double_check(t_nlist *stack_a, t_nlist *stack_b, int pos, int moves)
-{
-	
-}
 
 static int	get_current(t_nlist *stack_a, int moves)
 {
@@ -99,11 +94,25 @@ static void	execute_moves(t_nlist **stack_a, t_nlist **stack_b, int moves)
 void	sort_100(t_nlist **stack_a, t_nlist **stack_b)
 {
 	int		moves;
+	int		moves_b;
+	int		current_pos;
+	int		min_pos_b;
 	int		chunk_start;
 	int		chunk_end;
 
 	chunk_start = 0;
 	chunk_end = 20;
+	min_pos_b = find_min_pos(*stack_b);
 	moves = find_moves(*stack_a, chunk_start, chunk_end);
+	current_pos = get_current(*stack_a, moves);
+	if (current_pos > find_max_pos(*stack_b)
+		|| current_pos < min_pos_b)
+		moves_b = find_min_pos_moves(*stack_b, min_pos_b);
+	else
+		moves_b = find_mid_pos_moves(*stack_b, current_pos);
+	if (moves > 0 && moves_b < 0 || moves < 0 && moves_b > 0)
+	{
+		CHECK IF USING SAME TYPE OF MOVE IN B SAVES MORE MOVES THAN MOVES_B + MOVES
+	}
 	execute_moves(stack_a, stack_b, moves);
 }
