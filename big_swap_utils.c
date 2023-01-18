@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:12:43 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/18 10:55:03 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/18 11:10:56 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	find_mid_pos_moves(t_nlist *stack, int pos)
 	return (moves);
 }
 
-int	check_combos(t_nlist *stack_b, int moves, int moves_b)
+int	check_combos(t_nlist *stack_b, int moves_a, int moves_b)
 {
 	int	stack_size;
 	int	new_moves;
@@ -113,15 +113,15 @@ int	check_combos(t_nlist *stack_b, int moves, int moves_b)
 	stack_size = list_size(stack_b);
 	if (moves_b < 0)
 		moves_b *= -1;
-	else if (moves < 0)
-		moves *= -1;
-	total = moves + moves_b;
+	else if (moves_a < 0)
+		moves_a *= -1;
+	total = moves_a + moves_b;
 	new_moves = stack_size - moves_b;
-	if (moves >= new_moves)
+	if (moves_a >= new_moves)
 		return (new_moves);
 	else
-		new_moves -= moves;
-	if (moves + new_moves < total)
+		new_moves -= moves_a;
+	if (moves_a + new_moves < total)
 		return (new_moves);
 	else
 		return (moves_b);
