@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:17:47 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/18 11:51:08 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:48:44 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int			find_min_pos_moves(t_nlist *stack, int pos);
 int			find_mid_pos_moves(t_nlist *stack, int pos);
 int			check_combos(t_nlist *stack_b, int moves, int moves_b);
 void		execute_diff(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb);
-void		execute_same(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb);
+void		exec_same_r(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb);
+void		exec_same_rr(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb);
 
 int			count_moves(t_nlist *stack, int min);
 int			check_sort(t_nlist *stack);

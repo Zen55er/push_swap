@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:26:17 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/18 12:00:48 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:47:40 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,10 @@ static void	execute_moves(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
 {
 	if ((ma >= 0 && mb <= 0) || (ma <= 0 && mb >= 0))
 		execute_diff(stack_a, stack_b, ma, mb);
-	else if ((ma >= 0 && mb >= 0) || (ma <= 0 && mb <= 0))
-		execute_same(stack_a, stack_b, ma, mb);
+	else if ((ma >= 0 && mb >= 0))
+		execute_same_r(stack_a, stack_b, ma, mb);
+	else if (ma <= 0 && mb <= 0)
+		execute_same_rr(stack_a, stack_b, ma, mb);
 	return ;
 }
 
