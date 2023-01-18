@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:26:17 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/18 12:47:40 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:44:28 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	get_current(t_nlist *stack_a, int moves)
 	}
 }
 
-static int	find_moves(t_nlist *stack_a, int start, int end)
+static int	find_moves(t_nlist *stack_a, int end)
 {
 	int		moves;
 	t_nlist	*temp_forward;
@@ -50,11 +50,9 @@ static int	find_moves(t_nlist *stack_a, int start, int end)
 	temp_backward = stack_a;
 	while (1)
 	{
-		if (temp_forward->position >= start
-			&& temp_forward->position < end)
+		if (temp_forward->position < end)
 			break ;
-		else if (temp_backward->position >= start
-			&& temp_backward->position < end)
+		else if (temp_backward->position < end)
 		{
 			moves *= -1;
 			break ;
@@ -99,13 +97,9 @@ void	sort_100(t_nlist **stack_a, t_nlist **stack_b)
 	int		moves_b;
 	int		current_pos;
 	int		min_pos_b;
-	int		chunk_start;
-	int		chunk_end;
 
-	chunk_start = 0;
-	chunk_end = 20;
 	min_pos_b = find_min_pos(*stack_b);
-	moves_a = find_moves(*stack_a, chunk_start, chunk_end);
+	moves_a = find_moves(*stack_a, CHUNK);
 	current_pos = get_current(*stack_a, moves_a);
 	if (current_pos > find_max_pos(*stack_b)
 		|| current_pos < min_pos_b)
