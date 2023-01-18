@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:12:43 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/17 12:57:23 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:55:03 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,27 @@ int	find_mid_pos_moves(t_nlist *stack, int pos)
 		temp_backward = temp_backward->previous;
 	}
 	return (moves);
+}
+
+int	check_combos(t_nlist *stack_b, int moves, int moves_b)
+{
+	int	stack_size;
+	int	new_moves;
+	int	total;
+
+	stack_size = list_size(stack_b);
+	if (moves_b < 0)
+		moves_b *= -1;
+	else if (moves < 0)
+		moves *= -1;
+	total = moves + moves_b;
+	new_moves = stack_size - moves_b;
+	if (moves >= new_moves)
+		return (new_moves);
+	else
+		new_moves -= moves;
+	if (moves + new_moves < total)
+		return (new_moves);
+	else
+		return (moves_b);
 }

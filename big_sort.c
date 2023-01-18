@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:26:17 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/17 13:36:00 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/18 11:01:59 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,25 +68,39 @@ static int	find_moves(t_nlist *stack_a, int start, int end)
 	return (moves);
 }
 
-static void	execute_moves(t_nlist **stack_a, t_nlist **stack_b, int moves)
+static int	test_combos(t_nlist *stack_b, int moves, int moves_b)
+{
+	if (moves > 0 && moves_b < 0 || moves < 0 && moves_b > 0)
+	{
+		if (check_combos(stack_b, moves, moves_b) != moves_b)
+		{
+			moves_b = check_combos(stack_b, moves, moves_b);
+			if (moves < 0)
+				moves_b *= -1;
+		}
+	}
+	return (moves_b);
+}
+
+static void	execute_moves(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
 {
 	int	current_position;
 
-	current_position = get_current(*stack_a, moves);
-	if (moves >= 0)
+	current_position = get_current(*stack_a, ma);
+	if (ma >= 0)
 	{
-		while (moves > 0)
+		while (ma > 0)
 		{
 			rotate(stack_a, 0);
-			moves--;
+			ma--;
 		}
 	}
 	else
 	{
-		while (moves < 0)
+		while (ma < 0)
 		{
 			reverse_rotate(stack_a, 0);
-			moves++;
+			ma++;
 		}
 	}
 }
@@ -110,9 +124,6 @@ void	sort_100(t_nlist **stack_a, t_nlist **stack_b)
 		moves_b = find_min_pos_moves(*stack_b, min_pos_b);
 	else
 		moves_b = find_mid_pos_moves(*stack_b, current_pos);
-	if (moves > 0 && moves_b < 0 || moves < 0 && moves_b > 0)
-	{
-		CHECK IF USING SAME TYPE OF MOVE IN B SAVES MORE MOVES THAN MOVES_B + MOVES
-	}
-	execute_moves(stack_a, stack_b, moves);
+	moves_b = test_combos(*stack_b, moves, moves_b);
+	execute_moves(stack_a, stack_b, moves, moves_b);
 }
