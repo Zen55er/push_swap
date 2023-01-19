@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:26:17 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/19 14:41:07 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/19 16:13:32 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	find_moves(t_nlist *stack_a, int end)
 	return (moves);
 }
 
-static int	test_combos(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
+static int	test_combos(t_nlist **stack_b, int ma, int mb)
 {
 	if ((ma > 0 && mb < 0) || (ma < 0 && mb > 0))
 	{
@@ -75,11 +75,9 @@ static int	test_combos(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
 			mb = check_combos(*stack_b, ma, mb);
 			if (ma < 0)
 				mb *= -1;
-			exec_special(stack_a, stack_b, ma, mb);
-			return (1);
 		}
 	}
-	return (0);
+	return (mb);
 }
 
 static void	execute_moves(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
@@ -95,7 +93,7 @@ static void	execute_moves(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
 }
 
 //ONLY FOR TESTING DELETE AFTER
-/* static void	print_stack(t_nlist *stack_a, t_nlist *stack_b)
+static void	print_stack(t_nlist *stack_a, t_nlist *stack_b)
 {
 	int		x;
 	t_nlist	*temp_a;
@@ -135,7 +133,7 @@ static void	execute_moves(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
 	}
 	ft_printf("\n");
 	return ;
-} */
+}
 
 void	sort_100(t_nlist **stack_a, t_nlist **stack_b)
 {
@@ -155,14 +153,14 @@ void	sort_100(t_nlist **stack_a, t_nlist **stack_b)
 			moves_b = find_min_pos_moves(*stack_b, get_max(*stack_b));
 		else
 			moves_b = find_mid_pos_moves(*stack_b, curr_pos);
-		if (test_combos(stack_a, stack_b, moves_a, moves_b) == 0)
-			execute_moves(stack_a, stack_b, moves_a, moves_b);
+		moves_b = test_combos(stack_b, moves_a, moves_b);
+		execute_moves(stack_a, stack_b, moves_a, moves_b);
 		counter++;
 		if (counter == CHUNK)
 		{
 			chunk_end += CHUNK;
 			counter = 0;
 		}
-		//print_stack(*stack_a, *stack_b);
+		print_stack(*stack_a, *stack_b);
 	}
 }
