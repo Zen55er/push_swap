@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:47:32 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/16 11:53:41 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/19 08:31:19 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,7 @@ void	choose_sort(t_nlist **stack_a, t_nlist **stack_b)
 		sort_4(stack_a, stack_b);
 	else if (n == 5)
 		sort_5(stack_a, stack_b);
+	else if (n <= 100)
+		sort_100(stack_a, stack_b);
 	return ;
 }

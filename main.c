@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:41:54 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/12 13:13:09 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/19 09:57:40 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ static void	print_start(int argc, char **argv)
 
 static void	print_stack(t_nlist *stack_a, t_nlist *stack_b)
 {
-	int		i;
+	int		x;
 	char	c;
 	t_nlist	*temp_a;
 	t_nlist	*temp_b;
 
-	i = 1;
+	x = 1;
 	temp_a = stack_a;
 	temp_b = stack_b;
 	ft_printf("Stack A\t\t\t\t");
@@ -43,21 +43,25 @@ static void	print_stack(t_nlist *stack_a, t_nlist *stack_b)
 	while (stack_a)
 	{
 		ft_printf("\n");
-		ft_printf("Node %i: %i\t\t\t", i, stack_a->value);
+		ft_printf("Node %i: %i\t\t\t", x, stack_a->value);
 		if (stack_b)
 		{
-			ft_printf("Node %i: %i", i, stack_b->value);
+			ft_printf("Node %i: %i", x, stack_b->value);
 			stack_b = stack_b->next;
 		}
 		stack_a = stack_a->next;
 		if (stack_a == temp_a)
+		{
+			ft_printf("\n");
 			break ;
-		i++;
+		}
+		x++;
 	}
 	while (stack_b != temp_b)
 	{
-		ft_printf("Node %i: %i\n", i, stack_b->value);
+		ft_printf("\t\t\t\tNode %i: %i\n", x, stack_b->value);
 		stack_b = stack_b->next;
+		x++;
 	}
 	ft_printf("\n");
 	return ;

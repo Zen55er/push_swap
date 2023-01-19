@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:12:43 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/18 11:10:56 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/19 09:08:20 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	find_min_pos(t_nlist *stack)
 	int		min_pos;
 	t_nlist	*temp;
 
+	if (!stack)
+		return (0);
 	temp = stack;
 	min_pos = stack->position;
 	while (stack)
@@ -35,6 +37,8 @@ int	find_max_pos(t_nlist *stack)
 	int		max_pos;
 	t_nlist	*temp;
 
+	if (!stack)
+		return (0);
 	temp = stack;
 	max_pos = stack->position;
 	while (stack)
@@ -54,6 +58,8 @@ int	find_min_pos_moves(t_nlist *stack, int pos)
 	t_nlist	*temp_forward;
 	t_nlist	*temp_backward;
 
+	if (!stack)
+		return (0);
 	moves = 0;
 	temp_forward = stack;
 	temp_backward = stack;
@@ -86,11 +92,11 @@ int	find_mid_pos_moves(t_nlist *stack, int pos)
 	temp_backward = stack;
 	while (1)
 	{
-		if (temp_forward->position > pos
-			&& temp_forward->previous->position < pos)
+		if (temp_forward->position < pos
+			&& temp_forward->previous->position > pos)
 			break ;
-		else if (temp_backward->position > pos
-			&& temp_backward->previous->position < pos)
+		else if (temp_backward->position < pos
+			&& temp_backward->previous->position > pos)
 		{
 			moves *= -1;
 			break ;

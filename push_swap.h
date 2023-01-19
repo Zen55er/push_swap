@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:17:47 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/18 13:43:33 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/19 09:44:05 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 # include "../libft/libft.h"
 # include "../ft_printf/ft_printf.h"
 
-# define CHUNK = 20
+# ifndef CHUNK
+#  define CHUNK 20
+# endif
 
 typedef struct s_nlist
 {
