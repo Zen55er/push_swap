@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   big_swap_utils.c                                   :+:      :+:    :+:   */
+/*   big_sort_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:12:43 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/19 09:08:20 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/19 11:43:14 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_min_pos(t_nlist *stack)
+int	get_min(t_nlist *stack)
 {
 	int		min_pos;
 	t_nlist	*temp;
@@ -32,7 +32,7 @@ int	find_min_pos(t_nlist *stack)
 	return (min_pos);
 }
 
-int	find_max_pos(t_nlist *stack)
+int	get_max(t_nlist *stack)
 {
 	int		max_pos;
 	t_nlist	*temp;

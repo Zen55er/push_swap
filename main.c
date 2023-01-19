@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:41:54 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/19 09:57:40 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/19 11:27:32 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void	print_stack(t_nlist *stack_a, t_nlist *stack_b)
 	ft_printf("Stack A\t\t\t\t");
 	if (stack_b)
 		ft_printf("Stack B");
+	ft_printf("\n");
 	while (stack_a)
 	{
 		ft_printf("\n");
@@ -49,18 +50,20 @@ static void	print_stack(t_nlist *stack_a, t_nlist *stack_b)
 			ft_printf("Node %i: %i", x, stack_b->value);
 			stack_b = stack_b->next;
 		}
+		x++;
 		stack_a = stack_a->next;
 		if (stack_a == temp_a)
 		{
 			ft_printf("\n");
 			break ;
 		}
-		x++;
 	}
-	while (stack_b != temp_b)
+	while (stack_b)
 	{
 		ft_printf("\t\t\t\tNode %i: %i\n", x, stack_b->value);
 		stack_b = stack_b->next;
+		if (stack_b == temp_b)
+			break ;
 		x++;
 	}
 	ft_printf("\n");
@@ -107,7 +110,7 @@ int	main(int argc, char **argv)
 	if (!stack_a)
 		return (0);
 	get_positions(stack_a);
-	print_list_info(stack_a);
+	//print_list_info(stack_a);
 
 	/* //Prints B stack to make sure it's empty
 	ft_printf("\nTESTING EMPTY B\n");

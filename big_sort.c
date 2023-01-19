@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:26:17 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/19 09:33:07 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/19 11:58:39 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,23 +96,24 @@ void	sort_100(t_nlist **stack_a, t_nlist **stack_b)
 {
 	int		moves_a;
 	int		moves_b;
-	int		current_pos;
-	int		min_pos_b;
-	int		i;
+	int		curr_pos;
+	int		counter;
+	int		chunk_end;
 
-	i = 0;
-	while (i < CHUNK)
+	chunk_end = 0;
+	while (list_size(*stack_a) > 0)
 	{
-		moves_a = find_moves(*stack_a, CHUNK);
-		min_pos_b = find_min_pos(*stack_b);
-		current_pos = get_current(*stack_a, moves_a);
-		if (current_pos >= find_max_pos(*stack_b)
-			|| current_pos <= min_pos_b)
-			moves_b = find_min_pos_moves(*stack_b, find_max_pos(*stack_b));
+		counter = 0;
+		moves_a = find_moves(*stack_a, CHUNK + chunk_end);
+		curr_pos = get_current(*stack_a, moves_a);
+		if (curr_pos >= get_max(*stack_b) || curr_pos <= get_min(*stack_b))
+			moves_b = find_min_pos_moves(*stack_b, get_max(*stack_b));
 		else
-			moves_b = find_mid_pos_moves(*stack_b, current_pos);
+			moves_b = find_mid_pos_moves(*stack_b, curr_pos);
 		moves_b = test_combos(*stack_b, moves_a, moves_b);
 		execute_moves(stack_a, stack_b, moves_a, moves_b);
-		i++;
+		counter++;
+		if (counter == CHUNK)
+			chunk_end += CHUNK;
 	}
 }

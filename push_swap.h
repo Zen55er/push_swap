@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:17:47 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/19 09:44:05 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/19 11:42:50 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void		reverse_rotate(t_nlist **stack, int flag);
 
 int			find_min(t_nlist *stack);
 void		get_positions(t_nlist *stack);
-int			find_min_pos(t_nlist *stack);
-int			find_max_pos(t_nlist *stack);
+int			get_min(t_nlist *stack);
+int			get_max(t_nlist *stack);
 int			find_min_pos_moves(t_nlist *stack, int pos);
 int			find_mid_pos_moves(t_nlist *stack, int pos);
 int			check_combos(t_nlist *stack_b, int moves, int moves_b);
