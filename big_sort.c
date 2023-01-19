@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:26:17 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/19 14:21:06 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:41:07 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,20 @@ static int	find_moves(t_nlist *stack_a, int end)
 	return (moves);
 }
 
-static int	test_combos(t_nlist *stack_b, int moves_a, int moves_b)
+static int	test_combos(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
 {
-	if ((moves_a > 0 && moves_b < 0) || (moves_a < 0 && moves_b > 0))
+	if ((ma > 0 && mb < 0) || (ma < 0 && mb > 0))
 	{
-		if (check_combos(stack_b, moves_a, moves_b) != moves_b)
+		if (check_combos(*stack_b, ma, mb) != mb)
 		{
-			moves_b = check_combos(stack_b, moves_a, moves_b);
-			if (moves_a < 0)
-				moves_b *= -1;
+			mb = check_combos(*stack_b, ma, mb);
+			if (ma < 0)
+				mb *= -1;
+			exec_special(stack_a, stack_b, ma, mb);
+			return (1);
 		}
 	}
-	return (moves_b);
+	return (0);
 }
 
 static void	execute_moves(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
@@ -153,8 +155,8 @@ void	sort_100(t_nlist **stack_a, t_nlist **stack_b)
 			moves_b = find_min_pos_moves(*stack_b, get_max(*stack_b));
 		else
 			moves_b = find_mid_pos_moves(*stack_b, curr_pos);
-		moves_b = test_combos(*stack_b, moves_a, moves_b);
-		execute_moves(stack_a, stack_b, moves_a, moves_b);
+		if (test_combos(stack_a, stack_b, moves_a, moves_b) == 0)
+			execute_moves(stack_a, stack_b, moves_a, moves_b);
 		counter++;
 		if (counter == CHUNK)
 		{

@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:17:47 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/19 11:42:50 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:41:01 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int			check_combos(t_nlist *stack_b, int moves, int moves_b);
 void		execute_diff(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb);
 void		exec_same_r(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb);
 void		exec_same_rr(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb);
+void		exec_special(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb);
 
 int			count_moves(t_nlist *stack, int min);
 int			check_sort(t_nlist *stack);

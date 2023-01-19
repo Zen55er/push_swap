@@ -1,43 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   big_sort_utils_2.c                                 :+:      :+:    :+:   */
+/*   big_sort_utils_3.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 11:33:29 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/19 14:42:24 by gacorrei         ###   ########.fr       */
+/*   Created: 2023/01/19 14:42:17 by gacorrei          #+#    #+#             */
+/*   Updated: 2023/01/19 14:47:16 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	execute_diff(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
-{
-	if (ma > 0)
-	{
-		while (ma-- != 0)
-			rotate(stack_a, 0);
-	}
-	else
-	{
-		while (ma++ != 0)
-			reverse_rotate(stack_a, 0);
-	}
-	if (mb > 0)
-	{
-		while (mb-- != 0)
-			rotate(stack_b, 1);
-	}
-	else
-	{
-		while (mb++ != 0)
-			reverse_rotate(stack_b, 1);
-	}
-	return ;
-}
-
-void	exec_same_r(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
+static void	exec_spec_r(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
 {
 	if (ma >= mb)
 	{
@@ -64,7 +39,7 @@ void	exec_same_r(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
 	return ;
 }
 
-void	exec_same_rr(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
+static void	exec_spec_rr(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
 {
 	if (ma <= mb)
 	{
@@ -88,5 +63,15 @@ void	exec_same_rr(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
 		while (mb++ != 0)
 			reverse_rotate(stack_b, 1);
 	}
+	return ;
+}
+
+void	exec_special(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
+{
+	if ((ma >= 0 && mb >= 0))
+		exec_spec_r(stack_a, stack_b, ma, mb);
+	else if (ma <= 0 && mb <= 0)
+		exec_spec_rr(stack_a, stack_b, ma, mb);
+	push(stack_a, stack_b, 1);
 	return ;
 }
