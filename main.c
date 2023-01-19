@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:41:54 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/19 11:27:32 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/19 12:58:39 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	print_start(int argc, char **argv)
 static void	print_stack(t_nlist *stack_a, t_nlist *stack_b)
 {
 	int		x;
-	char	c;
 	t_nlist	*temp_a;
 	t_nlist	*temp_b;
 
