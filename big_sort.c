@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:26:17 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/19 16:13:32 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/20 10:53:48 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,49 +92,6 @@ static void	execute_moves(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
 	return ;
 }
 
-//ONLY FOR TESTING DELETE AFTER
-static void	print_stack(t_nlist *stack_a, t_nlist *stack_b)
-{
-	int		x;
-	t_nlist	*temp_a;
-	t_nlist	*temp_b;
-
-	x = 1;
-	temp_a = stack_a;
-	temp_b = stack_b;
-	ft_printf("Stack A\t\t\t\t");
-	if (stack_b)
-		ft_printf("Stack B");
-	ft_printf("\n");
-	while (stack_a)
-	{
-		ft_printf("\n");
-		ft_printf("Node %i: %i\t\t\t", x, stack_a->value);
-		if (stack_b)
-		{
-			ft_printf("Node %i: %i", x, stack_b->value);
-			stack_b = stack_b->next;
-		}
-		x++;
-		stack_a = stack_a->next;
-		if (stack_a == temp_a)
-		{
-			ft_printf("\n");
-			break ;
-		}
-	}
-	while (stack_b)
-	{
-		ft_printf("\t\t\t\tNode %i: %i\n", x, stack_b->value);
-		stack_b = stack_b->next;
-		if (stack_b == temp_b)
-			break ;
-		x++;
-	}
-	ft_printf("\n");
-	return ;
-}
-
 void	sort_100(t_nlist **stack_a, t_nlist **stack_b)
 {
 	int		moves_a;
@@ -161,6 +118,5 @@ void	sort_100(t_nlist **stack_a, t_nlist **stack_b)
 			chunk_end += CHUNK;
 			counter = 0;
 		}
-		print_stack(*stack_a, *stack_b);
 	}
 }

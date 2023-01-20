@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:41:54 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/19 12:58:39 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/20 11:02:51 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	print_stack(t_nlist *stack_a, t_nlist *stack_b)
 	t_nlist	*temp_a;
 	t_nlist	*temp_b;
 
-	x = 1;
+	x = 0;
 	temp_a = stack_a;
 	temp_b = stack_b;
 	ft_printf("Stack A\t\t\t\t");
@@ -44,13 +44,13 @@ static void	print_stack(t_nlist *stack_a, t_nlist *stack_b)
 	{
 		ft_printf("\n");
 		ft_printf("Node %i: %i\t\t\t", x, stack_a->value);
-		if (stack_b)
+		x++;
+		stack_a = stack_a->next;
+		if (stack_b != stack_b->previous)
 		{
 			ft_printf("Node %i: %i", x, stack_b->value);
 			stack_b = stack_b->next;
 		}
-		x++;
-		stack_a = stack_a->next;
 		if (stack_a == temp_a)
 		{
 			ft_printf("\n");
@@ -74,7 +74,6 @@ static void	print_list_info(t_nlist *stack_a)
 	int		i;
 	int		j;
 	int		k;
-	char	c;
 	t_nlist	*temp;
 
 	i = 1;
@@ -139,10 +138,11 @@ int	main(int argc, char **argv)
 	print_stack(stack_a, stack_b); */
 
 	//Testing sorts and print results
-	ft_printf("\nTESTING SORTS\n");
+	//ft_printf("\nTESTING SORTS\n");
 	choose_sort(&stack_a, &stack_b);
-	ft_printf("\n");
-	print_stack(stack_a, stack_b);
+	//ft_printf("\n");
+	//print_stack(stack_a, stack_b);
+	//print_list_info(stack_a);
 	//Free memory
 	free_list(&stack_a);
 	free_list(&stack_b);
