@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:11:42 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/24 11:26:26 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/24 11:32:25 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static int	check_repeat(int argc, char **argv)
 	return (0);
 }
 
-void	prep_stack_a(int argc, char **argv, t_nlist **stack_a)
+static void	prep_stack_a(int argc, char **argv, t_nlist **stack_a)
 {
 	int		i;
 	t_nlist	*temp;
@@ -103,5 +103,22 @@ void	prep_stack_a(int argc, char **argv, t_nlist **stack_a)
 		add_back(stack_a, temp);
 		i++;
 	}
+	return ;
+}
+
+void	push_swap(int argc, char **argv)
+{
+	t_nlist	*stack_a;
+	t_nlist	*stack_b;
+
+	stack_a = 0;
+	stack_b = 0;
+	prep_stack_a(argc, argv, &stack_a);
+	if (!stack_a)
+		return ;
+	get_positions(stack_a);
+	choose_sort(&stack_a, &stack_b);
+	free_list(&stack_a);
+	free_list(&stack_b);
 	return ;
 }
