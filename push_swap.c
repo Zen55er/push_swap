@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:11:42 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/19 12:54:46 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/24 11:26:26 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ static int	check_value(char *test)
 	i = 0;
 	if (test[i] == '-' && ft_isdigit(test[i + 1]))
 		i++;
-	/* if (test[i] == '0' && test[i + 1] != '\0')
-		return (write(2, "Error\n", 6)); */
 	while (test[i])
 	{
 		if (!ft_isdigit(test[i]))
