@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:17:47 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/24 11:32:34 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:35:15 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 
 # ifndef CHUNK
 #  define CHUNK 20
+# endif
+
+# ifndef CHUNK500
+#  define CHUNK500 50
 # endif
 
 typedef struct s_nlist
@@ -54,6 +58,7 @@ void		execute_diff(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb);
 void		exec_same_r(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb);
 void		exec_same_rr(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb);
 
+void		push_swap(char **argv);
 int			count_moves(t_nlist *stack, int min);
 int			check_sort(t_nlist *stack);
 void		choose_sort(t_nlist **stack_a, t_nlist **stack_b);
@@ -61,6 +66,7 @@ void		sort_3(t_nlist **stack);
 void		sort_4(t_nlist **stack_a, t_nlist **stack_b);
 void		sort_5(t_nlist **stack_a, t_nlist **stack_b);
 void		sort_100(t_nlist **stack_a, t_nlist **stack_b);
+void		sort_500(t_nlist **stack_a, t_nlist **stack_b);
 
 long long	ft_atoll(const char *nptr);
 #endif

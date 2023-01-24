@@ -37,6 +37,6 @@ fclean:		clean
 re:			fclean all
 
 run:
-			$(CC) $(FLAGS) main.c $(NAME) $(LIBFT) $(FT_PRINTF) -fsanitize=address
+			$(CC) $(FLAGS) push_swap.c $(NAME) $(LIBFT) $(FT_PRINTF) -fsanitize=address
 
 .PHONY: all bonus clean fclean run re

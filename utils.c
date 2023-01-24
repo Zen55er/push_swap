@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:47:32 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/20 10:54:26 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/24 11:49:15 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,12 @@ void	choose_sort(t_nlist **stack_a, t_nlist **stack_b)
 		swap(*stack_a, 0);
 	else if (n == 3)
 		sort_3(stack_a);
-	else if (n == 4)
-		sort_4(stack_a, stack_b);
-	else if (n == 5)
+	else if (n <= 5)
 		sort_5(stack_a, stack_b);
 	else if (n <= 100)
 		sort_100(stack_a, stack_b);
+	else if (n <= 500)
+		sort_500(stack_a, stack_b);
 	fix_moves = find_min_pos_moves(*stack_b, list_size(*stack_b) - 1);
 	execute_diff(0, stack_b, 0, fix_moves);
 	while (*stack_b)

@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:11:42 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/24 11:32:25 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/24 13:00:16 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,18 @@ static int	check_value(char *test)
 	return (1);
 }
 
-static int	check_repeat(int argc, char **argv)
+static int	check_repeat(int size, char **args)
 {
 	int		i;
 	int		j;
 
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (i < size)
 	{
-		j = 1;
+		j = 0;
 		while (j < i)
 		{
-			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
+			if (ft_atoi(args[i]) == ft_atoi(args[j]))
 				return (write(2, "Error\n", 6));
 			j++;
 		}
@@ -79,22 +79,22 @@ static int	check_repeat(int argc, char **argv)
 	return (0);
 }
 
-static void	prep_stack_a(int argc, char **argv, t_nlist **stack_a)
+static void	prep_stack_a(int size, char **args, t_nlist **stack_a)
 {
 	int		i;
 	t_nlist	*temp;
 
-	if (check_repeat(argc, argv) == 6)
+	if (check_repeat(size, args) == 6)
 		return ;
 	i = 1;
-	while (i < argc)
+	while (i < size)
 	{
-		if (check_value(argv[i]) == 6)
+		if (check_value(args[i]) == 6)
 		{
 			free_list(stack_a);
 			return ;
 		}
-		temp = new_node(ft_atoi(argv[i]));
+		temp = new_node(ft_atoi(args[i]));
 		if (!temp)
 		{
 			free_list(stack_a);
@@ -106,14 +106,23 @@ static void	prep_stack_a(int argc, char **argv, t_nlist **stack_a)
 	return ;
 }
 
-void	push_swap(int argc, char **argv)
+void	push_swap(char **argv)
 {
+	char	**args;
+	int		size;
 	t_nlist	*stack_a;
 	t_nlist	*stack_b;
 
+	args = ft_split(argv[1], ' ');
+	size = 0;
 	stack_a = 0;
 	stack_b = 0;
-	prep_stack_a(argc, argv, &stack_a);
+	while (args[size])
+		size++;
+	prep_stack_a(size, args, &stack_a);
+	while (size-- > 0)
+		free (args[size]);
+	free (args);
 	if (!stack_a)
 		return ;
 	get_positions(stack_a);
@@ -121,4 +130,10 @@ void	push_swap(int argc, char **argv)
 	free_list(&stack_a);
 	free_list(&stack_b);
 	return ;
+}
+
+int	main(int argc, char **argv)
+{
+	push_swap(argv);
+	return (argc);
 }

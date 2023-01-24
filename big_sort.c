@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:26:17 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/20 10:53:48 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/24 11:52:44 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,35 @@ void	sort_100(t_nlist **stack_a, t_nlist **stack_b)
 		if (counter == CHUNK)
 		{
 			chunk_end += CHUNK;
+			counter = 0;
+		}
+	}
+}
+
+void	sort_500(t_nlist **stack_a, t_nlist **stack_b)
+{
+	int		moves_a;
+	int		moves_b;
+	int		curr_pos;
+	int		counter;
+	int		chunk_end;
+
+	chunk_end = 0;
+	counter = 0;
+	while (list_size(*stack_a) > 0)
+	{
+		moves_a = find_moves(*stack_a, CHUNK500 + chunk_end);
+		curr_pos = get_current(*stack_a, moves_a);
+		if (curr_pos >= get_max(*stack_b) || curr_pos <= get_min(*stack_b))
+			moves_b = find_min_pos_moves(*stack_b, get_max(*stack_b));
+		else
+			moves_b = find_mid_pos_moves(*stack_b, curr_pos);
+		moves_b = test_combos(stack_b, moves_a, moves_b);
+		execute_moves(stack_a, stack_b, moves_a, moves_b);
+		counter++;
+		if (counter == CHUNK500)
+		{
+			chunk_end += CHUNK500;
 			counter = 0;
 		}
 	}
