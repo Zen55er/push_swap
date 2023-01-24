@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:11:42 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/24 13:00:16 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/24 13:28:20 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,15 @@ static void	prep_stack_a(int size, char **args, t_nlist **stack_a)
 	return ;
 }
 
-void	push_swap(char **argv)
+void	push_swap(int argc, char **argv)
 {
 	char	**args;
 	int		size;
 	t_nlist	*stack_a;
 	t_nlist	*stack_b;
 
+	if (argc < 2)
+		return ;
 	args = ft_split(argv[1], ' ');
 	size = 0;
 	stack_a = 0;
@@ -134,6 +136,6 @@ void	push_swap(char **argv)
 
 int	main(int argc, char **argv)
 {
-	push_swap(argv);
-	return (argc);
+	push_swap(argc, argv);
+	return (0);
 }
