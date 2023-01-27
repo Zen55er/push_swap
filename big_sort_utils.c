@@ -109,30 +109,3 @@ int	find_mid_pos_moves(t_nlist *stack, int pos)
 	}
 	return (moves);
 }
-
-int	check_combos(t_nlist *stack_b, int moves_a, int moves_b)
-{
-	int	new_moves;
-	int	total;
-	int	test;
-	int	signal_check;
-
-	signal_check = 1;
-	if (moves_b < 0)
-	{
-		moves_b *= -1;
-		signal_check = -1;
-	}
-	if (moves_a < 0)
-		moves_a *= -1;
-	total = moves_a + moves_b;
-	new_moves = list_size(stack_b) - moves_b;
-	if (moves_a >= new_moves)
-		test = 0;
-	else
-		test = new_moves - moves_a;
-	if (moves_a + test < total)
-		return (new_moves);
-	else
-		return (moves_b * signal_check);
-}

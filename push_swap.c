@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-void	free_list(t_nlist **stack)
+static void	free_list(t_nlist **stack)
 {
 	t_nlist	*temp;
 

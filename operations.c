@@ -24,11 +24,11 @@ void	swap(t_nlist *stack, int flag)
 	stack->next->value = hold_value;
 	stack->next->position = hold_position;
 	if (flag == 0)
-		ft_printf("sa\n");
+		write(1, "sa\n", 3);
 	else if (flag == 1)
-		ft_printf("sb\n");
+		write(1, "sb\n", 3);
 	else if (flag == 2)
-		ft_printf("ss\n");
+		write(1, "ss\n", 3);
 	return ;
 }
 
@@ -47,9 +47,9 @@ void	push(t_nlist **stack1, t_nlist **stack2, int flag)
 	}
 	add_front(stack2, temp);
 	if (flag == 0)
-		ft_printf("pa\n");
+		write(1, "pa\n", 3);
 	else
-		ft_printf("pb\n");
+		write(1, "pb\n", 3);
 	return ;
 }
 
@@ -57,11 +57,11 @@ void	rotate(t_nlist **stack, int flag)
 {
 	(*stack) = (*stack)->next;
 	if (flag == 0)
-		ft_printf("ra\n");
+		write(1, "ra\n", 3);
 	else if (flag == 1)
-		ft_printf("rb\n");
+		write(1, "rb\n", 3);
 	else if (flag == 2)
-		ft_printf("rr\n");
+		write(1, "rr\n", 3);
 	return ;
 }
 
@@ -69,10 +69,10 @@ void	reverse_rotate(t_nlist **stack, int flag)
 {
 	(*stack) = (*stack)->previous;
 	if (flag == 0)
-		ft_printf("rra\n");
+		write(1, "rra\n", 4);
 	else if (flag == 1)
-		ft_printf("rrb\n");
+		write(1, "rrb\n", 4);
 	else if (flag == 2)
-		ft_printf("rrr\n");
+		write(1, "rrr\n", 4);
 	return ;
 }

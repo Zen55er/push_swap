@@ -66,20 +66,6 @@ static int	find_moves(t_nlist *stack_a, int end)
 	return (moves);
 }
 
-static int	test_combos(t_nlist **stack_b, int ma, int mb)
-{
-	if ((ma > 0 && mb < 0) || (ma < 0 && mb > 0))
-	{
-		if (check_combos(*stack_b, ma, mb) != mb)
-		{
-			mb = check_combos(*stack_b, ma, mb);
-			if (ma < 0)
-				mb *= -1;
-		}
-	}
-	return (mb);
-}
-
 static void	execute_moves(t_nlist **stack_a, t_nlist **stack_b, int ma, int mb)
 {
 	if ((ma >= 0 && mb <= 0) || (ma <= 0 && mb >= 0))

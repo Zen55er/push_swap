@@ -39,7 +39,7 @@ void	sort_3(t_nlist **stack)
 	}
 }
 
-void	sort_4(t_nlist **stack_a, t_nlist **stack_b)
+static void	sort_4(t_nlist **stack_a, t_nlist **stack_b)
 {
 	int			min;
 	int			moves;
