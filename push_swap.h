@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:17:47 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/24 13:27:29 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:53:42 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # endif
 
 # ifndef CHUNK500
-#  define CHUNK500 50
+#  define CHUNK500 45
 # endif
 
 typedef struct s_nlist

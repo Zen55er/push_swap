@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 15:55:44 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/12 10:59:25 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:25:16 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	sort_3(t_nlist **stack)
 	int		b;
 	int		c;
 
+	if (check_sort(*stack) == 1)
+		return ;
 	a = (*stack)->value;
 	b = (*stack)->next->value;
 	c = (*stack)->next->next->value;
