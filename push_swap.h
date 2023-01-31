@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:17:47 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/30 12:53:42 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/31 10:51:07 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 # include "../libft/libft.h"
 
 # ifndef CHUNK
-#  define CHUNK 20
+#  define CHUNK 15
 # endif
 
 # ifndef CHUNK500
-#  define CHUNK500 45
+#  define CHUNK500 43
 # endif
 
 typedef struct s_nlist
