@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:41:54 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/20 11:02:51 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/01/31 09:38:18 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,18 +78,18 @@ static void	print_list_info(t_nlist *stack_a)
 
 	i = 1;
 	temp = stack_a;
-	ft_printf("Stack A\n");
+	printf("Stack A\n");
 	while (stack_a)
 	{
 		j = stack_a->value;
 		k = stack_a->position;
-		ft_printf("Node %i: Value %i\t\tPosition %i\n", i, j, k);
+		printf("Node %i: Value %i\t\tPosition %i\n", i, j, k);
 		stack_a = stack_a->next;
 		if (stack_a == temp)
 			break ;
 		i++;
 	}
-	ft_printf("\n");
+	printf("\n");
 	return ;
 }
 
