@@ -6,7 +6,7 @@
 /*   By: gacorrei <gacorrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:11:42 by gacorrei          #+#    #+#             */
-/*   Updated: 2023/01/31 14:33:06 by gacorrei         ###   ########.fr       */
+/*   Updated: 2023/02/01 10:29:55 by gacorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,9 +123,3 @@ void	push_swap(int argc, char **argv)
 	free_list(&stack_b);
 	return ;
 }
-
-/* int	main(int argc, char **argv)
-{
-	push_swap(argc, argv);
-	return (0);
-} */

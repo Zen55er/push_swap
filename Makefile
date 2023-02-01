@@ -25,6 +25,6 @@ fclean:		clean
 re:			fclean all
 
 run:
-			$(CC) $(FLAGS) push_swap.c -o push_swap $(NAME) $(LIBFT) -fsanitize=address
+			$(CC) $(FLAGS) main.c -o push_swap $(NAME) $(LIBFT) -fsanitize=address
 
 .PHONY: all clean fclean run re
