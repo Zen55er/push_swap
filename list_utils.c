@@ -20,7 +20,7 @@ t_nlist	*new_node(int number)
 	if (!node)
 		return (0);
 	node->value = number;
-	node->position = -1;
+	node->position = 0;
 	node->next = 0;
 	node->previous = 0;
 	return (node);
