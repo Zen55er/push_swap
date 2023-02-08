@@ -13,6 +13,7 @@ all:		$(NAME)
 $(NAME):	$(SRC_OBJS)
 			@$(MAKE) --no-print-directory -C $(LIBFT_DIR)
 			@ar -rcs $(NAME) $(SRC_OBJS) $(LIB)
+			$(CC) $(FLAGS) main.c -o push_swap $(NAME) $(LIBFT) -fsanitize=address
 
 clean:
 			@rm -f $(SRC_OBJS)
@@ -23,8 +24,5 @@ fclean:		clean
 			@$(MAKE) --no-print-directory -C $(LIBFT_DIR) fclean
 
 re:			fclean all
-
-run:
-			$(CC) $(FLAGS) main.c -o push_swap $(NAME) $(LIBFT) -fsanitize=address
 
 .PHONY: all clean fclean run re
